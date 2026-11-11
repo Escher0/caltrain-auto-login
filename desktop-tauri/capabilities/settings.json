@@ -1,0 +1,7 @@
+{
+  "identifier": "settings",
+  "description": "Only the bundled settings window can read preferences and invoke the app's typed actions.",
+  "windows": ["settings"],
+  "local": true,
+  "permissions": ["allow-settings-state", "allow-set-preference", "allow-set-startup", "allow-settings-action", "allow-request-update"]
+}

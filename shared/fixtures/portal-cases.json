@@ -1,0 +1,129 @@
+{
+  "portal_cases": [
+    {
+      "name": "standard",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": {
+        "limited": false
+      }
+    },
+    {
+      "name": "limited",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":\"limited\"};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":true,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": {
+        "limited": true
+      }
+    },
+    {
+      "name": "quoted braces and escaped quote",
+      "html": "<script>window.ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null,\"ignored\":\"braces }; and \\\" quote\"};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": {
+        "limited": false
+      }
+    },
+    {
+      "name": "limited feature without selected plan",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":true,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": {
+        "limited": false
+      }
+    },
+    {
+      "name": "unexpected credentials",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":true,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "truthy string terms",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":\"true\",\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "missing feature",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "missing bandwidth",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\"};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "unexpected success URL",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://other.example/\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "different portal",
+      "html": "<html>Other network</html>",
+      "payload": null
+    },
+    {
+      "name": "truncated configuration",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi",
+      "payload": null
+    },
+    {
+      "name": "invalid JSON",
+      "html": "<script>var ce_data = {\"auth_frontend\":undefined,\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "conflicting duplicate terms",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":false,\"terms\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    },
+    {
+      "name": "conflicting duplicate credentials",
+      "html": "<script>var ce_data = {\"auth_frontend\":\"api\",\"auth_bandwidth\":null};\nwindow.features = {\"terms\":true,\"sms_authentication\":true,\"sms_authentication\":false,\"email_credentials\":false,\"name_credentials\":false,\"marketing\":false,\"remember\":false,\"limited_bandwidth\":false,\"success_url\":\"https://www.caltrain.com/wi-fi\"};</script>",
+      "payload": null
+    }
+  ],
+  "auth_cases": [
+    {
+      "name": "accepted",
+      "body": "{\"data\":{\"authenticated\":true}}",
+      "authenticated": true
+    },
+    {
+      "name": "rejected",
+      "body": "{\"data\":{\"authenticated\":false}}",
+      "authenticated": false
+    },
+    {
+      "name": "string true",
+      "body": "{\"data\":{\"authenticated\":\"true\"}}",
+      "authenticated": false
+    },
+    {
+      "name": "missing field",
+      "body": "{\"data\":{}}",
+      "authenticated": false
+    },
+    {
+      "name": "HTML",
+      "body": "<html>Login</html>",
+      "authenticated": false
+    },
+    {
+      "name": "conflicting duplicate authentication",
+      "body": "{\"data\":{\"authenticated\":false,\"authenticated\":true}}",
+      "authenticated": false
+    },
+    {
+      "name": "conflicting duplicate data",
+      "body": "{\"data\":{\"authenticated\":false},\"data\":{\"authenticated\":true}}",
+      "authenticated": false
+    },
+    {
+      "name": "array instead of response object",
+      "body": "[[true]]",
+      "authenticated": false
+    },
+    {
+      "name": "array instead of data object",
+      "body": "{\"data\":[true]}",
+      "authenticated": false
+    }
+  ]
+}

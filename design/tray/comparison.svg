@@ -1,0 +1,491 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470"><rect width="760" height="470" fill="#e7e9ed"/><g font-family="sans-serif" fill="#252B30"><text x="28" y="32" font-size="20">Tray icon: current / no circle, larger train</text></g><rect x="20" y="50" width="350" height="400" rx="12" fill="#f9f9f9"/><g font-family="sans-serif" fill="#252B30" font-size="14"><text x="50" y="78">Current</text><text x="210" y="78">Proposed</text></g><svg x="35" y="90" width="140" height="140" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-35-90">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-35-90)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="205" y="90" width="140" height="140" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-205-90">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-205-90)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="35" y="274" font-family="sans-serif" fill="#252B30" font-size="12">16px</text><svg x="110" y="260" width="16" height="16" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-110-260">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-110-260)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="265" y="260" width="16" height="16" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-265-260">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-265-260)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="35" y="319" font-family="sans-serif" fill="#252B30" font-size="12">20px</text><svg x="110" y="305" width="20" height="20" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-110-305">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-110-305)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="265" y="305" width="20" height="20" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-265-305">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-265-305)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="35" y="364" font-family="sans-serif" fill="#252B30" font-size="12">24px</text><svg x="110" y="350" width="24" height="24" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-110-350">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-110-350)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="265" y="350" width="24" height="24" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-265-350">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-265-350)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="35" y="409" font-family="sans-serif" fill="#252B30" font-size="12">32px</text><svg x="110" y="395" width="32" height="32" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-110-395">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-110-395)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="265" y="395" width="32" height="32" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-265-395">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-265-395)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<rect x="390" y="50" width="350" height="400" rx="12" fill="#242424"/><g font-family="sans-serif" fill="#ffffff" font-size="14"><text x="420" y="78">Current</text><text x="580" y="78">Proposed</text></g><svg x="405" y="90" width="140" height="140" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-405-90">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-405-90)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="575" y="90" width="140" height="140" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-575-90">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-575-90)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="405" y="274" font-family="sans-serif" fill="#ffffff" font-size="12">16px</text><svg x="480" y="260" width="16" height="16" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-480-260">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-480-260)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="635" y="260" width="16" height="16" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-635-260">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-635-260)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="405" y="319" font-family="sans-serif" fill="#ffffff" font-size="12">20px</text><svg x="480" y="305" width="20" height="20" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-480-305">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-480-305)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="635" y="305" width="20" height="20" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-635-305">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-635-305)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="405" y="364" font-family="sans-serif" fill="#ffffff" font-size="12">24px</text><svg x="480" y="350" width="24" height="24" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-480-350">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-480-350)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="635" y="350" width="24" height="24" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-635-350">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-635-350)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<text x="405" y="409" font-family="sans-serif" fill="#ffffff" font-size="12">32px</text><svg x="480" y="395" width="32" height="32" viewBox="0 0 128 128">
+<defs><clipPath id="clip-old-480-395">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <circle fill="#FFFFFF" cx="64" cy="64" r="64"/>
+  <g id="train-mark" transform="translate(-3.166667938232422 0)">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-old-480-395)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+<svg x="635" y="395" width="32" height="32" viewBox="12 5.5 110 110">
+<defs><clipPath id="clip-new-635-395">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#clip-new-635-395)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>
+</svg>

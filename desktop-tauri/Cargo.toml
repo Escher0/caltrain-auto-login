@@ -1,0 +1,46 @@
+[package]
+name = "caltrain-wifi"
+version = "0.2.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+# Additional permission for Microsoft WebView2 is documented in ../LICENSING.md.
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "=2.7.4", features = [] }
+
+[dependencies]
+tauri = { version = "=2.12.5", features = ["tray-icon", "image-png"] }
+tauri-plugin-autostart = "=2.7.0"
+tauri-plugin-updater = "=2.14.1"
+tauri-plugin-single-instance = "=2.5.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+regex = "1"
+thiserror = "2"
+reqwest = { version = "=0.13.5", default-features = false, features = ["rustls-no-provider", "cookies"] }
+rustls = { version = "0.23", default-features = false, features = ["ring"] }
+reqwest_cookie_store = "=0.10.0"
+percent-encoding = "2"
+tokio = { version = "1", features = ["macros", "time", "rt", "net", "io-util", "process"] }
+tokio-util = "0.7"
+tempfile = "3"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["test-util"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "=0.62.2", features = [
+  "Networking_Connectivity",
+  "Win32_NetworkManagement_IpHelper",
+  "Win32_NetworkManagement_Ndis",
+  "Win32_Networking_NetworkListManager",
+  "Win32_Networking_WinSock",
+  "Win32_System_Com",
+  "Win32_System_WinRT",
+] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

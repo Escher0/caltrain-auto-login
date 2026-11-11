@@ -1,0 +1,31 @@
+Caltrain Auto Login: VPN & connection help
+
+A VPN, firewall or filtering app can prevent this helper from reaching the
+Wi-Fi sign-in page. A DNS or connection error alone does not identify its cause.
+
+If you use a VPN or filtering app, check its per-app exclusions, split tunneling
+or application filtering settings. For example, AdGuard and Tailscale can affect
+network routing or DNS. Available exclusions and setting names vary by product
+and operating system. Exclude Caltrain Auto Login where supported, or temporarily
+pause the VPN/filtering app while signing in if appropriate for your setup.
+Disabling content filtering alone may leave network routing active.
+
+A kill switch or policy that blocks connections outside the VPN can still
+prevent sign-in. This helper cannot override those policies or change your VPN,
+firewall or DNS settings.
+
+First check that Wi-Fi is connected to Caltrain. If another connection is being
+used for Internet access, the helper may pause. Use Refresh network status after
+changing network settings, then Connect now when it becomes available.
+
+If DNS still fails, check custom DNS settings and try the operating system's
+normal sign-in page. If a request times out, the train's connection may also be
+unavailable. Open activity log for the failed hostname and sign-in step.
+
+Desktop requests use the selected Wi-Fi source address and disable HTTP proxies.
+That does not override VPN routing or firewall policy. DNS uses the operating
+system resolver. The initial socket check only confirms that the Wi-Fi address
+can be bound locally; it does not prove Internet access or VPN bypass.
+
+Logs are local and include network names/addresses and bounded error details.
+Request URL paths and query strings are omitted; response bodies are not logged.

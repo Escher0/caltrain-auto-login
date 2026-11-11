@@ -1,0 +1,70 @@
+name: Prepare Caltrain Windows package
+
+# Deliberately manual and artifact-only. Publishing to the public
+# repository is a separate operation; this never creates a GitHub release.
+on:
+  workflow_dispatch:
+    inputs:
+      signed_update:
+        description: Build a signed update with the configured repository secrets
+        type: boolean
+        default: false
+      release_repository:
+        description: Public owner/repo (required for signed updates)
+        type: string
+        default: 'Escher0/caltrain-auto-login'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: desktop-tauri
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+      - run: cargo test --locked
+      - run: python -m unittest discover -s tools -p "test_*.py"
+      - name: Build installer and optional signed manifest
+        env:
+          SIGNED_UPDATE: ${{ inputs.signed_update }}
+          RELEASE_REPOSITORY: ${{ inputs.release_repository }}
+          TAURI_UPDATER_PUBLIC_KEY: ${{ vars.TAURI_UPDATER_PUBLIC_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $version = (Get-Content tauri.conf.json -Raw | ConvertFrom-Json).version
+          $output = Join-Path $env:RUNNER_TEMP 'caltrain-package'
+          New-Item -ItemType Directory -Force $output | Out-Null
+          $extra = @()
+          if ($env:SIGNED_UPDATE -eq 'true') {
+            if (-not $env:TAURI_SIGNING_PRIVATE_KEY -or -not $env:TAURI_UPDATER_PUBLIC_KEY) {
+              throw 'Configure the updater public key variable and private signing key secret first.'
+            }
+            $publicKey = Join-Path $env:RUNNER_TEMP 'caltrain.pub'
+            $config = Join-Path $env:RUNNER_TEMP 'caltrain-release.json'
+            [IO.File]::WriteAllText($publicKey, $env:TAURI_UPDATER_PUBLIC_KEY)
+            python tools/release.py config --repository $env:RELEASE_REPOSITORY --version $version --public-key $publicKey --output $config
+            if ($LASTEXITCODE -ne 0) { throw 'Release configuration failed' }
+            $extra = @('--config', $config)
+          }
+          npm exec --yes --package=@tauri-apps/cli@2.12.4 -- tauri build --ci @extra -- --locked
+          if ($LASTEXITCODE -ne 0) { throw 'Installer build failed' }
+          $installers = @(Get-ChildItem target/release/bundle/nsis/*-setup.exe)
+          if ($installers.Count -ne 1) { throw 'Expected exactly one NSIS installer' }
+          Copy-Item $installers[0].FullName $output
+          if ($env:SIGNED_UPDATE -eq 'true') {
+            Copy-Item ($installers[0].FullName + '.sig') $output
+            python tools/release.py manifest --repository $env:RELEASE_REPOSITORY --version $version --installer $installers[0].FullName --output "$output/latest.json"
+            if ($LASTEXITCODE -ne 0) { throw 'Manifest generation failed' }
+          }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: caltrain-windows
+          path: ${{ runner.temp }}/caltrain-package/
+          if-no-files-found: error

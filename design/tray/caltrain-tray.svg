@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="12 5.5 110 110" role="img" aria-label="Caltrain signal icon with curved cab livery aligned to the adjoining bar">
+<defs><clipPath id="body-silhouettes">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+</clipPath></defs>
+  <g id="train-mark">
+  <g fill="#CF2732">
+    <rect x="14" y="68" width="16" height="18" rx="3"/>
+    <rect x="36" y="57" width="16" height="29" rx="3"/>
+    <rect x="58" y="46" width="16" height="40" rx="3"/>
+    <path d="M83 86Q80 86 80 83V40Q80 35 85 35H94Q100 35 103 41L119 68Q121 72 120 76L119 81Q118 86 114 86Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M18 70H26Q28 70 28 72V82Q28 84 26 84H18Q16 84 16 82V72Q16 70 18 70Z"/>
+    <path d="M40 59H48Q50 59 50 61V82Q50 84 48 84H40Q38 84 38 82V61Q38 59 40 59Z"/>
+    <path d="M60 59H72V82Q72 84 70 84H62Q60 84 60 82Z"/>
+    <path d="M82 59H85C92 59 98 74 109 74H118L117 80Q116 84 113 84H84Q82 84 82 82Z"/>
+  </g>
+  <rect fill="#565B5F" x="14" y="81" width="60" height="5" clip-path="url(#body-silhouettes)"/>
+  <path fill="#252B30" d="M95 45H103L116 67H107Q104 67 103 65L93 48Q92 45 95 45Z"/>
+  </g>
+</svg>

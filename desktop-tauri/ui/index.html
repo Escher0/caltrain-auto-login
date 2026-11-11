@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caltrain Auto Login settings</title>
+  <link rel="stylesheet" href="settings.css">
+  <script src="settings.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="train.png" width="48" height="48" alt="">
+    <div><h1>Caltrain Auto Login</h1><p>Settings</p></div>
+    <span id="version" class="version"></span>
+  </header>
+  <main>
+    <section class="connection" aria-labelledby="connection-heading">
+      <div class="eyebrow" id="connection-heading">CONNECTION</div>
+      <p id="status" role="status">Checking Wi-Fi...</p>
+      <div class="actions"><button id="connect" class="primary" disabled>Connect now</button><button id="refresh" disabled>Refresh status</button></div>
+    </section>
+    <p id="error" class="error" role="alert" hidden></p>
+    <section aria-labelledby="signin-heading">
+      <h2 id="signin-heading">Sign-in</h2>
+      <div class="card">
+        <label class="setting" for="consent"><span><strong>Accept Wi-Fi terms on my behalf</strong><span class="description">Allow this app to accept Caltrain's Wi-Fi terms when signing in. Turn this off to stop sign-in.</span></span><input id="consent" type="checkbox" role="switch" disabled></label>
+        <label class="setting" for="automatic"><span><strong>Automatic sign-in</strong><span id="automatic-help" class="description">First allow terms acceptance above.</span></span><input id="automatic" type="checkbox" role="switch" aria-describedby="automatic-help" disabled></label>
+      </div>
+    </section>
+    <section aria-labelledby="startup-heading">
+      <h2 id="startup-heading">Startup</h2>
+      <div class="card"><label class="setting" for="startup"><span><strong>Start at login</strong><span id="startup-help" class="description">Start quietly in the system tray when you sign in.</span></span><input id="startup" type="checkbox" role="switch" aria-describedby="startup-help" disabled></label></div>
+    </section>
+    <section aria-labelledby="updates-heading">
+      <h2 id="updates-heading">Updates</h2>
+      <div class="card">
+        <label class="setting" for="check_updates"><span><strong>Check for updates automatically</strong><span id="update-help" class="description">Checking update availability...</span></span><input id="check_updates" type="checkbox" role="switch" aria-describedby="update-help" disabled></label>
+        <div class="update-action"><button id="update" disabled>Check for updates</button></div>
+      </div>
+    </section>
+    <footer><div class="actions"><button id="help" class="link" disabled>VPN &amp; connection help</button><button id="activity" class="link" disabled>Open activity log</button></div><p>Closing this window keeps Caltrain Auto Login in the tray.</p></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<resources>
+    <color name="launcher_background">#FFFFFF</color>
+    <color name="screen_background">#F7F8FA</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary">#252B30</color>
+    <color name="text_secondary">#626970</color>
+    <color name="outline">#E4E8ED</color>
+    <color name="brand">#BD2532</color>
+    <color name="on_brand">#FFFFFF</color>
+    <color name="success">#267356</color>
+    <color name="success_background">#E9F3ED</color>
+    <color name="disabled_button">#DDE1E5</color>
+    <bool name="light_system_bars">true</bool>
+</resources>
