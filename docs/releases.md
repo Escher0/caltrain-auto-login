@@ -43,6 +43,19 @@ signing or remove SmartScreen's unrecognized-publisher warnings.
    For the first public version, install its release-configured installer once;
    earlier development installations have no production update feed/key.
 
+For a development install listed as **Caltrain Wi-Fi**, use a one-time manual
+migration: quit the old helper, uninstall it with **Delete application data**
+unchecked, then install **Caltrain Auto Login** and re-enable **Start at login**
+if desired. NSIS identifies previous installs by product name, so the new name
+does not automatically replace the old installation. Back up the settings file
+before testing this migration. Do not run both helpers together.
+
+The renamed app retains the old startup-registration name. A targeted uninstall
+hook removes that entry only when it points to this installation, and preserves
+it during an updater reinstall. The Windows package check exercises silent
+installation/uninstallation and verifies that another installation's startup
+entry is left alone on a disposable GitHub-hosted runner.
+
 The source archive contains the exact Git commit and `cargo vendor --locked`
 output, including dependency sources/notices and a `.cargo/config.toml` pointing
 to them. The installer includes `licenses/`. The notice generator compares the
