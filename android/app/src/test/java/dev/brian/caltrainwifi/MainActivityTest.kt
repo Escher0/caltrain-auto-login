@@ -105,12 +105,13 @@ class MainActivityTest {
         assertFalse(app.tag<Switch>("automatic").isEnabled)
         controller.pause().stop().destroy()
     }
-    @Test fun `updates are visibly unconfigured and opening them never grants sign in consent`() {
+    @Test fun `updates reflect build configuration and opening them never grants sign in consent`() {
         val controller = Robolectric.buildActivity(MainActivity::class.java).setup()
         val app = controller.get()
         app.tag<View>("updates-toggle").performClick()
-        assertTrue(app.tag<TextView>("updates-status").text.contains("not configured"))
-        assertFalse(app.tag<Button>("updates-check").isEnabled)
+        val configured = BuildConfig.UPDATE_REPOSITORY.isNotBlank()
+        assertEquals(!configured, app.tag<TextView>("updates-status").text.contains("not configured"))
+        assertEquals(configured, app.tag<Button>("updates-check").isEnabled)
         assertEquals(View.GONE, app.tag<Button>("updates-release").visibility)
         assertFalse(Settings(context).consent)
         controller.recreate()
