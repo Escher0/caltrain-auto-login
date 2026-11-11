@@ -40,9 +40,10 @@ $overlay | ConvertTo-Json -Depth 10 | Set-Content $config -Encoding utf8
 npm exec --yes --package=@tauri-apps/cli@2.12.4 -- tauri build --ci --config $config -- --locked
 $installers = @(Get-ChildItem target/release/bundle/nsis/*-setup.exe)
 if ($installers.Count -ne 1) { throw 'Expected exactly one NSIS installer' }
-Copy-Item $installers[0].FullName $Output
+$stageArgs = @()
+if ($Signed) { $stageArgs += '--signed' }
+$staged = python tools/release.py stage --repository $Repository --version $Version --installer $installers[0].FullName --output $Output @stageArgs
 if ($Signed) {
-    cargo run --locked --example verify-update -- $installers[0].FullName ($installers[0].FullName + '.sig') $publicKey $Version
-    Copy-Item ($installers[0].FullName + '.sig') $Output
-    python tools/release.py manifest --repository $Repository --version $Version --installer $installers[0].FullName --output "$Output/latest.json"
+    cargo run --locked --example verify-update -- $staged ($staged + '.sig') $publicKey $Version
+    python tools/release.py manifest --repository $Repository --version $Version --installer $staged --output "$Output/latest.json"
 }

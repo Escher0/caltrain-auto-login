@@ -11,6 +11,7 @@ import argparse
 import base64
 import json
 import re
+import shutil
 import tomllib
 from pathlib import Path
 from urllib.parse import quote
@@ -32,6 +33,18 @@ def check_version(root, version):
     locked = [p["version"] for p in lock["package"] if p["name"] == cargo["package"]["name"]]
     if config["version"] != version or cargo["package"]["version"] != version or locked != [version]:
         raise ValueError("Release version must match tauri.conf.json, Cargo.toml and Cargo.lock")
+
+
+def stage_installer(artifact, output, version, signed):
+    validate("local/check", version)
+    artifact = Path(artifact)
+    destination = Path(output) / f"caltrain-auto-login_{version}_x64-setup.exe"
+    if not artifact.is_file() or artifact.stat().st_size == 0 or artifact.suffix != ".exe":
+        raise ValueError("Expected a nonempty Windows installer")
+    shutil.copyfile(artifact, destination)
+    if signed:
+        shutil.copyfile(str(artifact) + ".sig", str(destination) + ".sig")
+    return destination
 
 
 def overlay(repository, version, public_key):
@@ -75,7 +88,7 @@ def manifest(repository, version, artifact, notes):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["config", "manifest", "check-version"])
+    parser.add_argument("command", choices=["config", "manifest", "check-version", "stage"])
     parser.add_argument("--repository", required=True)
     parser.add_argument("--version", required=True)
     parser.add_argument("--output", type=Path)
@@ -83,12 +96,18 @@ def main():
     parser.add_argument("--public-key", type=Path)
     parser.add_argument("--installer", type=Path)
     parser.add_argument("--notes", type=Path)
+    parser.add_argument("--signed", action="store_true")
     args = parser.parse_args()
     check_version(args.project, args.version)
     if args.command == "check-version":
         return
     if not args.output:
-        parser.error("config and manifest require --output")
+        parser.error("config, manifest and stage require --output")
+    if args.command == "stage":
+        if not args.installer:
+            parser.error("stage requires --installer")
+        print(stage_installer(args.installer, args.output, args.version, args.signed))
+        return
     if args.command == "config":
         if not args.public_key:
             parser.error("config requires --public-key")

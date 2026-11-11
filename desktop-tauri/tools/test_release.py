@@ -12,6 +12,21 @@ import release
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_stages_installer_and_signature_with_github_safe_names(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            installer = root / "Caltrain Auto Login_0.2.0_x64-setup.exe"
+            installer.write_bytes(b"installer")
+            Path(str(installer) + ".sig").write_text("signature")
+            output = root / "out"
+            output.mkdir()
+            staged = release.stage_installer(installer, output, "0.2.0", True)
+            self.assertEqual(staged.name, "caltrain-auto-login_0.2.0_x64-setup.exe")
+            self.assertEqual(staged.read_bytes(), b"installer")
+            self.assertEqual(Path(str(staged) + ".sig").read_text(), "signature")
+            document = release.manifest("a/b", "0.2.0", staged, "")
+            self.assertTrue(document["platforms"]["windows-x86_64"]["url"].endswith("/caltrain-auto-login_0.2.0_x64-setup.exe"))
+
     def test_overlay_uses_selected_repository_and_requires_signed_versions(self):
         key = base64.b64encode(b"untrusted comment: test key\nRW" + b"a" * 54 + b"\n").decode()
         config = release.overlay("Example/caltrain", "0.2.0", key)
