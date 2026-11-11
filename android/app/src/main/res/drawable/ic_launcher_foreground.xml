@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Brian Pilnick
+SPDX-License-Identifier: GPL-3.0-or-later
+Additional WebView2 permission: see LICENSING.md at the repository root.
+-->
+
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="192" android:viewportHeight="192">
     <!-- The 128-unit review circle maps to the adaptive launcher mask. -->
     <group android:translateX="28.833332061767578" android:translateY="32">

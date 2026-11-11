@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod settings_window;

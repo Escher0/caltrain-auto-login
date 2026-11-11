@@ -31,3 +31,23 @@ convey the resulting work.
 This permission is limited to those WebView2 components. The covered project
 material remains subject to the GPL, and this permission does not replace the
 license terms of third-party components.
+
+## File-level notices
+
+Original source files carry short copyright and SPDX headers. `REUSE.toml`
+records notices for artwork, documentation, JSON, lockfiles and generated
+permission files. It separately identifies the Gradle wrapper as Apache-2.0;
+upstream notices must be retained.
+
+The SPDX identifier records the base GPL-3.0-or-later license. The additional
+WebView2 permission above is granted alongside it and is referenced by source
+headers and `REUSE.toml`. It is not a standard SPDX exception identifier.
+
+When adding original source files, use the same header and retain any additional
+contributor notices. For files that cannot carry comments or are generated, add
+an annotation in `REUSE.toml`. Do not apply the project's copyright or GPL header
+to third-party files; record their actual notices instead. Keep license texts
+unchanged in `LICENSES/`.
+
+Check coverage from the repository root with `reuse lint` (or `uvx reuse lint`).
+This checks notice coverage and formatting, not dependency license compatibility.

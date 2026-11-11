@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Brian Pilnick
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Additional WebView2 permission: see LICENSING.md at the repository root.
+
 param([Parameter(Mandatory=$true)][string]$ExecutablePath)
 $ErrorActionPreference = 'Stop'
 $ExecutablePath = (Resolve-Path $ExecutablePath).Path

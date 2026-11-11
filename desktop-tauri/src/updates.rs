@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 use crate::Log;
 use caltrain_wifi::runtime::{Command, Handle as LoginHandle};
 use std::{

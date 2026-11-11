@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 use crate::portal::{Error, Reply, Transport, PORTAL_ORIGIN, PORTAL_URL};
 use reqwest::{header, redirect::Policy, Client, Url};
 use reqwest_cookie_store::{CookieStore, CookieStoreMutex};

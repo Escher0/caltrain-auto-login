@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 plugins { id("org.jetbrains.kotlin.jvm"); `java-library` }
 
 kotlin { jvmToolchain(17) }

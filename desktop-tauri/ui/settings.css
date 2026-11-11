@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Brian Pilnick
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Additional WebView2 permission: see LICENSING.md at the repository root.
+ */
+
 :root { color-scheme: light; font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; color: #252629; background: #f6f6f7; }
 * { box-sizing: border-box; }
 body { margin: 0; }

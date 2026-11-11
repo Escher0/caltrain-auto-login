@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 'use strict';
 (() => {
   const ids = ['version', 'status', 'error', 'connect', 'refresh', 'consent', 'automatic', 'startup', 'check_updates', 'update', 'help', 'activity', 'automatic-help', 'startup-help', 'update-help'];

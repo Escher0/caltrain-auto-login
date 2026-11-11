@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Brian Pilnick
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Additional WebView2 permission: see LICENSING.md at the repository root.
+
 //! Local, bounded network diagnostics. A failure category is not proof of a VPN.
 use crate::portal::{Error, Reply, Stage, Transport};
 use serde::Serialize;
