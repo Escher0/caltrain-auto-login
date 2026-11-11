@@ -4,7 +4,7 @@
 
 [package]
 name = "caltrain-wifi"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 license = "GPL-3.0-or-later"
 # Additional permission for Microsoft WebView2 is documented in ../LICENSING.md.
