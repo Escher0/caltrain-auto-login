@@ -57,6 +57,8 @@ kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarg
 tasks.register("releaseDependencies") {
     val destination = layout.buildDirectory.file("release-dependencies.json")
     outputs.file(destination)
+    // Also reflect dependency changes in :shared and transitive resolution.
+    outputs.upToDateWhen { false }
     doLast {
         val components = configurations.getByName("releaseRuntimeClasspath").resolvedConfiguration.resolvedArtifacts
             .filter { it.id.componentIdentifier is org.gradle.api.artifacts.component.ModuleComponentIdentifier }
