@@ -11,6 +11,7 @@ import argparse
 import base64
 import json
 import re
+import tomllib
 from pathlib import Path
 from urllib.parse import quote
 
@@ -20,6 +21,17 @@ def validate(repository, version):
         raise ValueError("Repository must be owner/name")
     if not re.fullmatch(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", version):
         raise ValueError("Version must be a stable major.minor.patch version")
+
+
+def check_version(root, version):
+    validate("local/check", version)
+    root = Path(root)
+    config = json.loads((root / "tauri.conf.json").read_text())
+    cargo = tomllib.loads((root / "Cargo.toml").read_text())
+    lock = tomllib.loads((root / "Cargo.lock").read_text())
+    locked = [p["version"] for p in lock["package"] if p["name"] == cargo["package"]["name"]]
+    if config["version"] != version or cargo["package"]["version"] != version or locked != [version]:
+        raise ValueError("Release version must match tauri.conf.json, Cargo.toml and Cargo.lock")
 
 
 def overlay(repository, version, public_key):
@@ -36,7 +48,7 @@ def overlay(repository, version, public_key):
         "bundle": {"createUpdaterArtifacts": True},
         "plugins": {"updater": {
             "pubkey": public_key,
-            "endpoints": [f"https://github.com/{repository}/releases/latest/download/latest.json"],
+            "endpoints": [f"https://raw.githubusercontent.com/{repository}/updates/windows/stable.json"],
             "requireSignedVersion": True,
         }},
     }
@@ -63,14 +75,20 @@ def manifest(repository, version, artifact, notes):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["config", "manifest"])
+    parser.add_argument("command", choices=["config", "manifest", "check-version"])
     parser.add_argument("--repository", required=True)
     parser.add_argument("--version", required=True)
-    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--project", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--public-key", type=Path)
     parser.add_argument("--installer", type=Path)
     parser.add_argument("--notes", type=Path)
     args = parser.parse_args()
+    check_version(args.project, args.version)
+    if args.command == "check-version":
+        return
+    if not args.output:
+        parser.error("config and manifest require --output")
     if args.command == "config":
         if not args.public_key:
             parser.error("config requires --public-key")

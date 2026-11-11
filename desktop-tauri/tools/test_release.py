@@ -4,6 +4,7 @@
 
 import base64
 import tempfile
+import json
 import unittest
 from pathlib import Path
 
@@ -19,7 +20,21 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(config["plugins"]["updater"]["pubkey"], key)
         self.assertTrue(config["plugins"]["updater"]["requireSignedVersion"])
         self.assertEqual(config["plugins"]["updater"]["endpoints"],
-                         ["https://github.com/Example/caltrain/releases/latest/download/latest.json"])
+                         ["https://raw.githubusercontent.com/Example/caltrain/updates/windows/stable.json"])
+
+    def test_release_version_must_match_all_desktop_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "tauri.conf.json").write_text(json.dumps({"version": "0.2.0"}))
+            (root / "Cargo.toml").write_text('[package]\nname="caltrain-wifi"\nversion="0.2.0"\n')
+            (root / "Cargo.lock").write_text('[[package]]\nname="caltrain-wifi"\nversion="0.2.0"\n')
+            release.check_version(root, "0.2.0")
+            for filename in ["tauri.conf.json", "Cargo.toml", "Cargo.lock"]:
+                original = (root / filename).read_text()
+                (root / filename).write_text(original.replace("0.2.0", "0.3.0"))
+                with self.subTest(filename=filename), self.assertRaisesRegex(ValueError, "version"):
+                    release.check_version(root, "0.2.0")
+                (root / filename).write_text(original)
 
     def test_rejects_bad_release_inputs(self):
         for repository in ["", "a", "a/b/c", "https://github.com/a/b", "a/b?x=y", "a/.."]:

@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Brian Pilnick
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Additional WebView2 permission: see LICENSING.md at the repository root.
+
+accepted = ["MIT", "Apache-2.0", "ISC", "BSD-3-Clause", "BSD-2-Clause", "Zlib", "Unicode-3.0", "MPL-2.0"]
+targets = ["x86_64-pc-windows-msvc"]
+ignore-dev-dependencies = true
+ignore-build-dependencies = true
+private = { ignore = true }

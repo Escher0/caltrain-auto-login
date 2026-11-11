@@ -1,0 +1,94 @@
+# SPDX-FileCopyrightText: 2026 Brian Pilnick
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Additional WebView2 permission: see LICENSING.md at the repository root.
+
+name: Windows release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Stable version matching Cargo.toml, Cargo.lock and tauri.conf.json
+        required: true
+        type: string
+      operation:
+        description: Prepare a signed draft, or publish a reviewed draft and advance the feed
+        required: true
+        type: choice
+        options: [prepare, publish]
+
+permissions:
+  contents: read
+concurrency:
+  group: windows-release
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'prepare'
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: desktop-tauri
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      RELEASE_REPOSITORY: ${{ github.repository }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+      - name: Validate version and signing configuration
+        env:
+          PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          PUBLIC_KEY: ${{ vars.TAURI_UPDATER_PUBLIC_KEY }}
+        run: |
+          python tools/release.py check-version --repository $env:RELEASE_REPOSITORY --version $env:RELEASE_VERSION
+          if (-not $env:PRIVATE_KEY -or -not $env:PUBLIC_KEY) { throw 'Configure and back up the updater signing keys first. See docs/releases.md.' }
+      - run: cargo test --locked
+      - run: python -m unittest discover -s tools -p 'test_*.py'
+      - run: cargo install cargo-about --version 0.9.3 --locked --features cli
+      - name: Build signed installer, notices and source archive
+        env:
+          TAURI_UPDATER_PUBLIC_KEY: ${{ vars.TAURI_UPDATER_PUBLIC_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: ./tools/package-windows.ps1 -Repository $env:RELEASE_REPOSITORY -Version $env:RELEASE_VERSION -Output "$env:RUNNER_TEMP/caltrain-release" -Signed
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-release-candidate
+          path: ${{ runner.temp }}/caltrain-release/
+          if-no-files-found: error
+      - name: Create draft release (never overwrite an existing release)
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $true
+          $tag = "caltrain-desktop-v$env:RELEASE_VERSION"
+          $notes = Join-Path $env:RUNNER_TEMP 'release-notes.md'
+          @"
+          Windows x64 release of Caltrain Auto Login $env:RELEASE_VERSION.
+
+          Built from $env:GITHUB_SHA. Install the setup.exe asset. Updates require confirmation in the app.
+          Updater signatures do not provide Windows Authenticode signing; Windows may show an unrecognized-publisher warning.
+          Source (including Rust dependency sources) and license notices are attached.
+
+          Maintainer checklist before publishing: review notices, test installation/upgrade and updater signature verification, replace these notes with user-facing changes.
+          "@ | Set-Content $notes
+          $assets = @(Get-ChildItem "$env:RUNNER_TEMP/caltrain-release" -File | ForEach-Object FullName)
+          # Creating the tag fails if it already exists; never reuse a tag at another commit.
+          gh api "repos/$env:RELEASE_REPOSITORY/git/refs" -f "ref=refs/tags/$tag" -f "sha=$env:GITHUB_SHA"
+          gh release create $tag @assets --repo $env:RELEASE_REPOSITORY --verify-tag --title "Windows $env:RELEASE_VERSION" --notes-file $notes --draft --latest=false
+
+  publish:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'publish'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Publish release, then advance only the Windows feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          RELEASE_REPOSITORY: ${{ github.repository }}
+        run: python3 desktop-tauri/tools/publish.py --repository "$RELEASE_REPOSITORY" --version "$RELEASE_VERSION"
