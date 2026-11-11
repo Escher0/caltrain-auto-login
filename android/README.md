@@ -76,6 +76,12 @@ a local debug key. Android requires a compatible signing identity for in-place
 updates. Builds signed by another key require uninstalling the existing app,
 which clears its settings. Never commit signing keys or `local.properties`.
 
+The **Android release** workflow prepares signed drafts and separately publishes
+reviewed releases. The [Android release guide](../docs/android-releases.md) covers
+keystore setup, version checks, dependency notices and the first-install migration.
+Pull-request CI builds and verifies a release APK using a disposable test key;
+those artifacts are not updates for existing installations.
+
 ## Build and test
 
 Open `android/` in Android Studio. Keep the adjacent `shared/` directory.

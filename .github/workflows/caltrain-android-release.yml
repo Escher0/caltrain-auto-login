@@ -1,0 +1,105 @@
+# SPDX-FileCopyrightText: 2026 Brian Pilnick
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Additional WebView2 permission: see LICENSING.md at the repository root.
+
+name: Android release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Stable version matching Android versionName (also increment versionCode)
+        required: true
+        type: string
+      operation:
+        description: Prepare a signed draft, or publish a reviewed draft
+        required: true
+        type: choice
+        options: [prepare, publish]
+
+permissions:
+  contents: read
+concurrency:
+  group: android-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: android
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_REPOSITORY: ${{ github.repository }}
+      RELEASE_VERSION: ${{ inputs.version }}
+      ANDROID_SIGNING_CERT_SHA256: ${{ vars.ANDROID_SIGNING_CERT_SHA256 }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+      - run: python3 -m unittest discover -s tools -p 'test_*.py'
+      - name: Restore production keystore
+        if: inputs.operation == 'prepare'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          python3 - <<'PY'
+          import base64, os, pathlib, re
+          if not re.fullmatch('[0-9a-f]{64}', os.environ['ANDROID_SIGNING_CERT_SHA256']):
+              raise SystemExit('Configure ANDROID_SIGNING_CERT_SHA256. See docs/android-releases.md.')
+          encoded = os.environ.get('KEYSTORE_BASE64', '')
+          if not encoded:
+              raise SystemExit('Configure and back up the production keystore first. See docs/android-releases.md.')
+          path = pathlib.Path(os.environ['RUNNER_TEMP']) / 'android-release.p12'
+          path.touch(mode=0o600, exist_ok=False)
+          path.write_bytes(base64.b64decode(encoded, validate=True))
+          PY
+      - name: Build and verify signed APK, notices and source
+        if: inputs.operation == 'prepare'
+        env:
+          CALTRAIN_KEYSTORE: ${{ runner.temp }}/android-release.p12
+          CALTRAIN_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          CALTRAIN_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          CALTRAIN_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: bash tools/package.sh
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: inputs.operation == 'prepare'
+        with:
+          name: android-release-candidate
+          path: ${{ runner.temp }}/android-release/
+          if-no-files-found: error
+      - name: Create signed draft release
+        if: inputs.operation == 'prepare'
+        run: |
+          set -euo pipefail
+          tag="caltrain-android-v$RELEASE_VERSION"
+          cat > "$RUNNER_TEMP/android-notes.md" <<EOF
+          Android release of Caltrain Auto Login $RELEASE_VERSION, built from $GITHUB_SHA.
+
+          Download the APK to install. Android requires confirmation; updates do not install silently.
+          A development build signed with a different key must be uninstalled first, which clears settings.
+          Source, dependency sources, signing-certificate fingerprint and license notices are attached.
+
+          Maintainer checklist: review notices, test installation and same-key upgrades, and replace these notes with user-facing changes before publishing.
+          EOF
+          gh api "repos/$RELEASE_REPOSITORY/git/refs" -f "ref=refs/tags/$tag" -f "sha=$GITHUB_SHA"
+          gh release create "$tag" "$RUNNER_TEMP/android-release/"* --repo "$RELEASE_REPOSITORY" \
+            --verify-tag --title "Android $RELEASE_VERSION" --notes-file "$RUNNER_TEMP/android-notes.md" --draft --latest=false
+      - name: Verify reviewed APK and publish Android release
+        if: inputs.operation == 'publish'
+        run: |
+          python3 tools/release.py publish --repository "$RELEASE_REPOSITORY" \
+            --version "$RELEASE_VERSION" --certificate "$ANDROID_SIGNING_CERT_SHA256"
+      - name: Remove restored signing material
+        if: always()
+        run: rm -f "$RUNNER_TEMP/android-release.p12"
