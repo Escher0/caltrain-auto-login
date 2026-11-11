@@ -11,6 +11,16 @@ import zipfile
 from pathlib import Path
 
 
+def append_vendor(archive, desktop):
+    # Cargo packages may use Unix epoch timestamps. ZIP starts at 1980.
+    # Retain git archive's original entries, including executable permissions.
+    with zipfile.ZipFile(archive, "a", compression=zipfile.ZIP_DEFLATED, strict_timestamps=False) as zipped:
+        for source in sorted((desktop / "vendor").rglob("*")):
+            if source.is_file():
+                zipped.write(source, "desktop-tauri/" + source.relative_to(desktop).as_posix())
+        zipped.write(desktop / ".cargo/config.toml", "desktop-tauri/.cargo/config.toml")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
@@ -29,7 +39,8 @@ def main():
                                 stdout=subprocess.PIPE, check=True)
         (desktop / ".cargo").mkdir(exist_ok=True)
         (desktop / ".cargo/config.toml").write_bytes(result.stdout)
-        shutil.make_archive(str(output.with_suffix("")), "zip", source)
+        shutil.copyfile(archive, output)
+        append_vendor(output, desktop)
 
 
 if __name__ == "__main__":

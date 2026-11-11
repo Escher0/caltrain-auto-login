@@ -18,7 +18,7 @@ $Output = (Resolve-Path $Output).Path
 python tools/generate-notices.py --output "$Output/THIRD_PARTY_LICENSES.html"
 Copy-Item ../LICENSE, ../LICENSING.md $Output
 # Preserve source and upstream notices with the exact release, including crates.
-python tools/source-bundle.py --output "$Output/source.zip"
+python tools/source_bundle.py --output "$Output/source.zip"
 
 $config = Join-Path $env:RUNNER_TEMP 'caltrain-release.json'
 $overlay = @{}
