@@ -4,6 +4,7 @@
 
 import base64
 import tempfile
+import json
 import unittest
 from pathlib import Path
 
@@ -11,6 +12,21 @@ import release
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_stages_installer_and_signature_with_github_safe_names(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            installer = root / "Caltrain Auto Login_0.2.0_x64-setup.exe"
+            installer.write_bytes(b"installer")
+            Path(str(installer) + ".sig").write_text("signature")
+            output = root / "out"
+            output.mkdir()
+            staged = release.stage_installer(installer, output, "0.2.0", True)
+            self.assertEqual(staged.name, "caltrain-auto-login_0.2.0_x64-setup.exe")
+            self.assertEqual(staged.read_bytes(), b"installer")
+            self.assertEqual(Path(str(staged) + ".sig").read_text(), "signature")
+            document = release.manifest("a/b", "0.2.0", staged, "")
+            self.assertTrue(document["platforms"]["windows-x86_64"]["url"].endswith("/caltrain-auto-login_0.2.0_x64-setup.exe"))
+
     def test_overlay_uses_selected_repository_and_requires_signed_versions(self):
         key = base64.b64encode(b"untrusted comment: test key\nRW" + b"a" * 54 + b"\n").decode()
         config = release.overlay("Example/caltrain", "0.2.0", key)
@@ -19,7 +35,21 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(config["plugins"]["updater"]["pubkey"], key)
         self.assertTrue(config["plugins"]["updater"]["requireSignedVersion"])
         self.assertEqual(config["plugins"]["updater"]["endpoints"],
-                         ["https://github.com/Example/caltrain/releases/latest/download/latest.json"])
+                         ["https://raw.githubusercontent.com/Example/caltrain/updates/windows/stable.json"])
+
+    def test_release_version_must_match_all_desktop_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "tauri.conf.json").write_text(json.dumps({"version": "0.2.0"}))
+            (root / "Cargo.toml").write_text('[package]\nname="caltrain-wifi"\nversion="0.2.0"\n')
+            (root / "Cargo.lock").write_text('[[package]]\nname="caltrain-wifi"\nversion="0.2.0"\n')
+            release.check_version(root, "0.2.0")
+            for filename in ["tauri.conf.json", "Cargo.toml", "Cargo.lock"]:
+                original = (root / filename).read_text()
+                (root / filename).write_text(original.replace("0.2.0", "0.3.0"))
+                with self.subTest(filename=filename), self.assertRaisesRegex(ValueError, "version"):
+                    release.check_version(root, "0.2.0")
+                (root / filename).write_text(original)
 
     def test_rejects_bad_release_inputs(self):
         for repository in ["", "a", "a/b/c", "https://github.com/a/b", "a/b?x=y", "a/.."]:

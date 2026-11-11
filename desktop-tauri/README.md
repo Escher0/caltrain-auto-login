@@ -177,11 +177,11 @@ npm exec --yes --package=@tauri-apps/cli@2.12.4 -- tauri build --ci --config /tm
 python tools/release.py manifest --repository Escher0/caltrain-auto-login --version 0.2.0 --installer 'target/release/bundle/nsis/Caltrain Auto Login_0.2.0_x64-setup.exe' --output /tmp/latest.json
 ```
 
-When publishing is authorized, upload the installer, its `.sig`, and `latest.json`
-to the stable release tagged `caltrain-desktop-v0.2.0` in the selected public repo.
-The app reads `releases/latest/download/latest.json`; keep that repository's latest
-release dedicated to this desktop feed. Change the version in Cargo.toml,
-Cargo.lock and tauri.conf.json together before the next build. Ubuntu `.deb`
-updates are manual for now; the generated manifest targets Windows x64 only.
+The **Windows release** workflow prepares signed drafts and separately publishes
+reviewed releases. Windows reads `windows/stable.json` on the `updates` branch,
+independently of Android release tags. See the [release guide](../docs/releases.md)
+for signing setup, preparation, publication, recovery and remaining device checks.
+Change Cargo.toml, Cargo.lock and tauri.conf.json together before the next build.
+Ubuntu `.deb` updates remain manual; the manifest targets Windows x64 only.
 
 See [licensing](../LICENSING.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).

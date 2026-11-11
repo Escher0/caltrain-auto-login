@@ -1,0 +1,14 @@
+<!-- SPDX-FileCopyrightText: 2026 Brian Pilnick -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Additional WebView2 permission: see LICENSING.md at the repository root. -->
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Caltrain Auto Login dependency licenses</title>
+<h1>Third-party licenses</h1>
+<p>Caltrain Auto Login is GPL-3.0-or-later with an additional WebView2 permission.
+See the accompanying LICENSE and LICENSING.md. Dependencies retain their own terms.</p>
+{{#each licenses}}
+<h2>{{name}}</h2><ul>
+{{#each used_by}}<li>{{crate.name}} {{crate.version}}</li>{{/each}}
+</ul><pre>{{text}}</pre>
+{{/each}}
+</html>
