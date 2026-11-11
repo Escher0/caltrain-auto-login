@@ -171,10 +171,10 @@ each release. See [Tauri's updater instructions](https://v2.tauri.app/plugin/upd
 Local metadata preparation uses only the public key:
 
 ```sh
-python tools/release.py config --repository Escher0/caltrain-auto-login --version 0.2.0 --public-key /path/to/key.pub --output /tmp/release.json
+python tools/release.py config --repository Escher0/caltrain-auto-login --version 0.2.1 --public-key /path/to/key.pub --output /tmp/release.json
 # Set the signing-key environment variables for this build.
 npm exec --yes --package=@tauri-apps/cli@2.12.4 -- tauri build --ci --config /tmp/release.json -- --locked
-python tools/release.py manifest --repository Escher0/caltrain-auto-login --version 0.2.0 --installer 'target/release/bundle/nsis/Caltrain Auto Login_0.2.0_x64-setup.exe' --output /tmp/latest.json
+python tools/release.py manifest --repository Escher0/caltrain-auto-login --version 0.2.1 --installer 'target/release/bundle/nsis/Caltrain Auto Login_0.2.1_x64-setup.exe' --output /tmp/latest.json
 ```
 
 The **Windows release** workflow prepares signed drafts and separately publishes

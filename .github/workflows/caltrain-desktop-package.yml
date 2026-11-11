@@ -47,6 +47,11 @@ jobs:
         run: |
           $version = (Get-Content tauri.conf.json -Raw | ConvertFrom-Json).version
           ./tools/package-windows.ps1 -Repository $env:RELEASE_REPOSITORY -Version $version -Output "$env:RUNNER_TEMP/caltrain-package" -Signed:($env:SIGNED_UPDATE -eq 'true')
+      - name: Verify installer and startup cleanup on disposable runner
+        run: |
+          $installer = @(Get-ChildItem "$env:RUNNER_TEMP/caltrain-package/*-setup.exe")
+          if ($installer.Count -ne 1) { throw 'Expected one staged installer' }
+          ./tools/test-installer.ps1 -Installer $installer[0].FullName
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: caltrain-windows
