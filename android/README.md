@@ -1,8 +1,8 @@
 # Caltrain Auto Login for Android
 
 Native Kotlin app for Android 10 or newer (minimum API 29, target API 36).
-Automatic sign-in has been tested on a Pixel phone. This repository contains
-source; no public APK release is available yet.
+Download the signed APK from [Android 0.1.6](https://github.com/Escher0/caltrain-auto-login/releases/tag/caltrain-android-v0.1.6).
+Installation and sign-in were tested on a Pixel 11 Pro with VPN bypass enabled.
 
 ## Use
 
@@ -57,8 +57,9 @@ The normal Android sign-in page remains a fallback.
 
 ## Updates and signing
 
-The checked-in update repository is unset, so checks are disabled and send no
-requests. A release build can configure the public repository with
+Published APKs check `Escher0/caltrain-auto-login` for updates. The checked-in
+development configuration leaves the update repository unset, so those builds
+disable checks and send no requests. A release build configures the repository with
 `-PcaltrainUpdateRepository=Escher0/caltrain-auto-login`.
 
 Configured builds support manual checks, optional app-open checks at most daily,
@@ -71,8 +72,10 @@ The checker selects stable releases tagged `caltrain-android-vMAJOR.MINOR.PATCH`
 with a nonempty `caltrain-wifi-android-MAJOR.MINOR.PATCH.apk` asset. It opens the
 release page for the user to download and install; it does not install silently.
 
-Production signing and a device upgrade test are pending. Development builds use
-a local debug key. Android requires a compatible signing identity for in-place
+Public releases use a persistent release signing key. Public update detection,
+notifications and an upgrade from an older test build using that key were verified
+in an Android emulator; consent and automatic-sign-in settings were retained.
+Development builds use a local debug key. Android requires a compatible signing identity for in-place
 updates. Builds signed by another key require uninstalling the existing app,
 which clears its settings. Never commit signing keys or `local.properties`.
 
@@ -99,8 +102,8 @@ On Windows, use `gradlew.bat` instead. The debug APK is written to
 `app/build/outputs/apk/debug/app-debug.apk`.
 
 Tests use synthetic fixtures, local HTTP servers and Robolectric. They do not
-sign into Caltrain. Current source includes the renamed app, VPN diagnostics and
-update checks; these changes still need device-level release validation.
+sign into Caltrain. Physical-phone installation and portal sign-in were verified
+for 0.1.6 with VPN bypass enabled; Android background scheduling can still vary.
 The application ID remains `dev.brian.caltrainwifi`.
 
 ## Privacy

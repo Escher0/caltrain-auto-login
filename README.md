@@ -17,9 +17,13 @@ Internet access separately from the portal's authentication response.
 
 ## Get started
 
-This first public snapshot is source-only. Installers and APK releases have not
-been published. The latest settings, diagnostic and update-checking changes still
-need device-level release validation.
+**Android:** Download the APK from [Android 0.1.6](https://github.com/Escher0/caltrain-auto-login/releases/tag/caltrain-android-v0.1.6).
+Installation and sign-in were tested on a Pixel 11 Pro with VPN bypass enabled.
+If replacing a development build, follow the release notes for the one-time
+uninstall/reinstall migration.
+
+**Windows:** A public installer is not available yet. Windows Smart App Control
+blocked the unsigned release candidate; public-trust code signing is still needed.
 
 - [Desktop setup, building and testing](desktop-tauri/README.md)
 - [Android setup, permissions and building](android/README.md)
@@ -40,9 +44,14 @@ or Android's block-without-VPN setting. See the in-app VPN help and platform doc
 
 ## Updates
 
-Update-checking code is included, but the checked-in configuration has no live
-feed or signing key. Public release signing and upgrade tests are still pending.
-Creating this source repository does not enable automatic app updates.
+The Android release checks GitHub for newer stable Android versions. Enable
+automatic checks and notification permission in **Updates** to receive alerts.
+Downloading and installing an update require your confirmation. Public update
+detection and a same-key upgrade with settings retained were verified in an
+Android emulator.
+
+Windows release/update validation is still pending. Development builds on both
+platforms leave the update source unconfigured unless explicitly set at build time.
 
 ## Development
 
