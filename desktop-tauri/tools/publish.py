@@ -75,7 +75,11 @@ class GitHub:
         return result.stdout if binary else json.loads(result.stdout)
 
     def get_release(self, tag):
-        return self.api(f"{self.root}/releases/tags/{tag}")
+        # The REST by-tag endpoint excludes drafts; gh resolves both draft and public tags.
+        release_id = int(subprocess.check_output([
+            "gh", "release", "view", tag, "--repo", self.root.removeprefix("repos/"),
+            "--json", "databaseId", "--jq", ".databaseId"]))
+        return self.api(f"{self.root}/releases/{release_id}")
 
     def download(self, asset):
         return self.api(f"{self.root}/releases/assets/{asset['id']}", binary=True)

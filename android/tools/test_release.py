@@ -3,11 +3,26 @@
 # Additional WebView2 permission: see LICENSING.md at the repository root.
 
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import release
 
 
 class AndroidReleaseTests(unittest.TestCase):
+    def test_publish_finds_draft_by_id_before_validating_assets(self):
+        def api(repository, endpoint, **kwargs):
+            self.assertEqual(repository, "a/b")
+            # GitHub's by-tag endpoint returns 404 for this existing draft.
+            self.assertEqual(endpoint, "releases/17")
+            return {"id": 17, "tag_name": "caltrain-android-v0.1.6",
+                    "draft": True, "prerelease": False, "assets": []}
+
+        with patch.object(release.subprocess, "check_output", return_value=b"17\n"), \
+                patch.object(release, "gh_api", side_effect=api):
+            with self.assertRaisesRegex(ValueError, "Release asset is missing"):
+                release.publish(SimpleNamespace(repository="a/b", version="0.1.6"))
+
     def test_compiled_updater_repository_must_match_the_release_repository(self):
         field = '.field public static final UPDATE_REPOSITORY:Ljava/lang/String; = "Escher0/caltrain-auto-login"'
         release.check_repository(field, "Escher0/caltrain-auto-login")
