@@ -141,7 +141,11 @@ def prepare(args):
 
 def publish(args):
     tag = f"caltrain-android-v{args.version}"
-    release = gh_api(args.repository, f"releases/tags/{tag}")
+    # The REST by-tag endpoint excludes drafts; gh resolves both draft and public tags.
+    release_id = int(subprocess.check_output([
+        "gh", "release", "view", tag, "--repo", args.repository,
+        "--json", "databaseId", "--jq", ".databaseId"]))
+    release = gh_api(args.repository, f"releases/{release_id}")
     if release["prerelease"] or release["tag_name"] != tag:
         raise ValueError("Expected the matching stable Android release")
     assets = {a["name"]: a for a in release["assets"]}

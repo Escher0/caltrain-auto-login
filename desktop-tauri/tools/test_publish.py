@@ -5,6 +5,7 @@
 import copy
 import json
 import unittest
+from unittest.mock import patch
 
 import publish
 
@@ -50,6 +51,21 @@ class FakeGitHub:
 
 
 class PromotionTests(unittest.TestCase):
+    def test_release_lookup_uses_id_for_drafts_and_published_releases(self):
+        for draft in (True, False):
+            with self.subTest(draft=draft):
+                document = {"id": 17, "tag_name": "caltrain-desktop-v0.2.1", "draft": draft}
+                github = publish.GitHub("a/b")
+
+                def api(path):
+                    # The by-tag endpoint cannot find an existing draft.
+                    self.assertEqual(path, "repos/a/b/releases/17")
+                    return document
+
+                with patch.object(publish.subprocess, "check_output", return_value=b"17\n"), \
+                        patch.object(github, "api", side_effect=api):
+                    self.assertEqual(github.get_release("caltrain-desktop-v0.2.1"), document)
+
     def test_publishes_before_advertising_and_repeat_is_noop(self):
         github = FakeGitHub()
         publish.promote(github, "a/b", "0.2.0")
